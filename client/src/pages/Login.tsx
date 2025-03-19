@@ -8,6 +8,7 @@ const Login = () => {
     username: '',
     password: ''
   });
+  const [errorMessage, setErrorMessage] = useState(''); // State for error message
 
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -19,11 +20,14 @@ const Login = () => {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    setErrorMessage(''); // Clear any previous error message
+
     try {
       const data = await login(loginData);
       Auth.login(data.token);
     } catch (err) {
       console.error('Failed to login', err);
+      setErrorMessage('*Username or Password incorrect'); // Set error message
     }
   };
 
@@ -46,6 +50,7 @@ const Login = () => {
           onChange={handleChange}
         />
         <button type='submit'>Submit Form</button>
+        {errorMessage && <p className="error-message">{errorMessage}</p>} {/* Display error message */}
       </form>
     </div>
     
