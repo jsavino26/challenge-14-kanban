@@ -20,6 +20,7 @@ export const authenticateToken = (req: Request, res: Response, next: NextFunctio
     // Attach the user data to the request object
     req.user = { username: decoded.username };
     next(); // Pass control to the next middleware or route handler
+    return; // Explicitly return after calling next()
   } catch (err) {
     return res.status(403).json({ message: 'Invalid or expired token' });
   }
