@@ -5,11 +5,13 @@ import bcrypt from 'bcrypt';
 
 export const login = async (req: Request, res: Response) => {
   const { username, password } = req.body;
+  console.log('Login request received:', { username, password });
 
   try {
     // Check if the user exists in the database
     const user = await User.findOne({ where: { username } });
     if (!user) {
+      console.log('User not found:', username);
       return res.status(404).json({ message: 'User not found' });
     }
 
