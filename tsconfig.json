@@ -11,6 +11,7 @@
     /* JavaScript Support */
     "allowJs": true /* Allow JavaScript files to be a part of your program. Use the 'checkJS' option to get errors from these files. */,
     "checkJs": true /* Enable error reporting in type-checked JavaScript files. */,
+    "jsx": "react" /* <-- ADD THIS to support JSX in JS files */,
 
     /* Interop Constraints */
     "esModuleInterop": true /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables 'allowSyntheticDefaultImports' for type compatibility. */,
@@ -29,8 +30,8 @@
 
     /* Output Settings */
     "outDir": "./server/dist", // Output directory for compiled files
-    "rootDir": "./server/src"  // Root directory for source files
+    "rootDir": "./server/src" // Root directory for source files
   },
-  "include": ["server/src/**/*"], // Include all TypeScript files in the source directory
+  "include": ["server/src/**/*"], // Include backend & frontend
   "exclude": ["node_modules", "server/dist"] // Exclude the output directory
 }
