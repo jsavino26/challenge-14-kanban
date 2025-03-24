@@ -22,8 +22,28 @@ export const login = async (req: Request, res: Response) => {
     }
 
     // Generate a JWT token
-    const secretKey = process.env.JWT_SECRET || '3gHtP1*3skL41@!52y7$F5pQv9xNwMzY';
-    const token = jwt.sign({ username: user.username }, secretKey, { expiresIn: '1h' });
+    const secretKey = process.env.JWT_SECRET_KEY || "";
+    const token = jwt.sign({ username: user.username }, secretKey, { expiresIn: '12h' });
+
+    // Return the token to the client
+    return res.status(200).json({ token });
+  } catch (error) {
+    console.error('Error during login:', error);
+    return res.status(500).json({ message: 'Internal server error' });
+  }
+};
+
+export const createUser = async (req: Request, res: Response) => {
+  
+
+  try {
+    // Check if the user exists in the database
+    const user = await User.create(req.body);
+    
+
+    // Generate a JWT token
+    const secretKey = process.env.JWT_SECRET_KEY || "";
+    const token = jwt.sign({ username: user.username }, secretKey, { expiresIn: '12h' });
 
     // Return the token to the client
     return res.status(200).json({ token });
@@ -37,5 +57,7 @@ const router = Router();
 
 // POST /login - Login a user
 router.post('/login', login);
+
+router.post('/register', createUser);
 
 export default router;
