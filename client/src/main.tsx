@@ -8,6 +8,7 @@ import ErrorPage from './pages/ErrorPage.tsx';
 import EditTicket from './pages/EditTicket.tsx';
 import CreateTicket from './pages/CreateTicket.tsx';
 import Login from './pages/Login.tsx';
+import CreateUser from './pages/CreateUser.tsx'; // Import CreateUser component
 
 const router = createBrowserRouter([
   {
@@ -17,23 +18,27 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Board />
-      }, 
+        element: <Board />,
+      },
       {
         path: '/edit',
-        element: <EditTicket />
+        element: <EditTicket />,
       },
       {
         path: '/create',
-        element: <CreateTicket />
+        element: <CreateTicket />,
       },
       {
         path: '/login',
-        element: <Login />
+        element: <Login />,
+      },
+      {
+        path: '/createuser', // New route for CreateUser
+        element: <CreateUser />, // Import and use CreateUser component
       }
-    ]
+    ],
   }
-])
+]);
 
 const rootElement = document.getElementById('root');
 if (rootElement) {
