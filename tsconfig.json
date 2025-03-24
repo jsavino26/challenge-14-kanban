@@ -29,13 +29,8 @@
     "useUnknownInCatchVariables": true /* Ensure 'unknown' is used for catch clause variables. */,
 
     /* Output Settings */
-    /* Output Settings */
-    "outDir": "./dist", /* Output directory for compiled files (root directory) */
-    "rootDir": "./server/src", /* Root directory for backend source files */
-    "baseUrl": ".", /* Set the base directory for relative module imports */
-    "paths": {
-      "*": ["node_modules/*", "server/src/*"] /* Allow import from the 'server/src' directory */
-    }
+    "outDir": "./server/dist", // Output directory for compiled files
+    "rootDir": "./server/src" // Root directory for source files
   },
   "include": ["server/src/**/*"], // Include backend & frontend
   "exclude": ["node_modules", "server/dist"] // Exclude the output directory
