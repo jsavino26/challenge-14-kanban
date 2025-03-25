@@ -24,4 +24,8 @@ const Ticket = TicketFactory(sequelize);
 User.hasMany(Ticket, { foreignKey: 'assignedUserId' });
 Ticket.belongsTo(User, { foreignKey: 'assignedUserId', as: 'assignedUser'});
 
+sequelize.sync({ force: false }) // Set to true only if you want to drop and recreate tables
+  .then(() => console.log('Database synced'))
+  .catch((err) => console.error('Error syncing database:', err));
+
 export { sequelize, User, Ticket };
